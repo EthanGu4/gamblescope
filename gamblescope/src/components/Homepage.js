@@ -1,44 +1,54 @@
-import React, { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import './Homepage.css';
+import React, { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import "./Homepage.css";
 
 function Homepage() {
   const { signUp, signIn } = useAuth();
   const [isSignUp, setIsSignUp] = useState(true);
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
-    setError(''); // Clear error when user types
+    setError(""); // Clear error when user types
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setError('');
+    setError("");
 
     try {
       if (isSignUp) {
         // Sign up validation
         if (formData.password !== formData.confirmPassword) {
-          setError('Passwords do not match');
+          setError("Passwords do not match");
           setIsLoading(false);
           return;
         }
-        
+
         if (formData.password.length < 6) {
-          setError('Password must be at least 6 characters');
+          setError("Password must be at least 6 characters");
+          setIsLoading(false);
+          return;
+        }
+
+        // Email validation - must have @ and a period after @
+        const emailParts = formData.email.split("@");
+        if (emailParts.length !== 2 || !emailParts[1].includes(".")) {
+          setError(
+            "Email must contain @ and a valid domain (e.g., name@example.com)",
+          );
           setIsLoading(false);
           return;
         }
@@ -46,12 +56,12 @@ function Homepage() {
         const result = signUp({
           username: formData.username,
           email: formData.email,
-          password: formData.password
+          password: formData.password,
         });
 
         if (result.success) {
           // New user created successfully - they will be redirected to market by App.js
-          console.log('New user created, will redirect to market');
+          console.log("New user created, will redirect to market");
         } else {
           setError(result.error);
         }
@@ -59,7 +69,7 @@ function Homepage() {
         // Sign in
         const result = signIn({
           username: formData.username,
-          password: formData.password
+          password: formData.password,
         });
 
         if (!result.success) {
@@ -67,7 +77,7 @@ function Homepage() {
         }
       }
     } catch (err) {
-      setError('An error occurred. Please try again.');
+      setError("An error occurred. Please try again.");
     }
 
     setIsLoading(false);
@@ -75,12 +85,12 @@ function Homepage() {
 
   const toggleMode = () => {
     setIsSignUp(!isSignUp);
-    setError('');
+    setError("");
     setFormData({
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
     });
   };
 
@@ -92,7 +102,7 @@ function Homepage() {
             <h1>GambleScope</h1>
             <p className="tagline">get rich off gradescope</p>
           </div>
-          
+
           <div className="features">
             <h2>Why GambleScope?</h2>
             <div className="feature-list">
@@ -124,12 +134,11 @@ function Homepage() {
         <div className="auth-section">
           <div className="auth-card">
             <div className="auth-header">
-              <h2>{isSignUp ? 'Create Account' : 'Sign In'}</h2>
+              <h2>{isSignUp ? "Create Account" : "Sign In"}</h2>
               <p>
-                {isSignUp 
-                  ? 'Join GambleScope and start betting on test scores!' 
-                  : 'Welcome back! Sign in to your account.'
-                }
+                {isSignUp
+                  ? "Join GambleScope and start betting on test scores!"
+                  : "Welcome back! Sign in to your account."}
               </p>
             </div>
 
@@ -197,28 +206,33 @@ function Homepage() {
                 </div>
               )}
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="submit-button"
                 disabled={isLoading}
               >
-                {isLoading ? 'Processing...' : (isSignUp ? 'Create Account' : 'Sign In')}
+                {isLoading
+                  ? "Processing..."
+                  : isSignUp
+                    ? "Create Account"
+                    : "Sign In"}
               </button>
             </form>
 
             <div className="auth-footer">
               <p>
-                {isSignUp ? 'Already have an account?' : "Don't have an account?"}
-                <button 
-                  type="button" 
+                {isSignUp
+                  ? "Already have an account?"
+                  : "Don't have an account?"}
+                <button
+                  type="button"
                   className="toggle-button"
                   onClick={toggleMode}
                 >
-                  {isSignUp ? 'Sign In' : 'Create Account'}
+                  {isSignUp ? "Sign In" : "Create Account"}
                 </button>
               </p>
             </div>
-
           </div>
         </div>
       </div>

@@ -1,8 +1,10 @@
 .header {
   background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
-  color: #F5F5DC;
+  color: #f5f5dc;
   padding: 1rem 0;
-  box-shadow: 0 4px 20px rgba(44, 62, 80, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 4px 20px rgba(44, 62, 80, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   border-bottom: 3px solid #1a252f;
 }
 
@@ -42,7 +44,7 @@
 .nav-button {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.2);
-  color: #F5F5DC;
+  color: #f5f5dc;
   padding: 0.75rem 1.5rem;
   border-radius: 25px;
   cursor: pointer;
@@ -56,13 +58,13 @@
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .nav-button.active {
   background: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .user-section {
@@ -122,7 +124,7 @@
   background: rgba(220, 53, 69, 0.3);
   border-color: rgba(220, 53, 69, 0.5);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
@@ -130,25 +132,25 @@
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .header-right {
     flex-direction: column;
     gap: 1rem;
     width: 100%;
   }
-  
+
   .nav {
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
   }
-  
+
   .nav-button {
     flex: 1;
     text-align: center;
     min-width: 120px;
   }
-  
+
   .user-section {
     width: 100%;
     justify-content: center;

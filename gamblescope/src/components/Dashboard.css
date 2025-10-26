@@ -309,29 +309,45 @@
   display: block;
 }
 
+.achievements-tab {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.achievements-tab .achievements {
+  padding: 0;
+  background: transparent;
+}
+
+.achievements-tab .achievements-header {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .dashboard {
     padding: 1rem;
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .bet-history-item {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .bet-amounts {
     margin-top: 0.5rem;
   }
-  
+
   .dashboard-tabs {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .tab-button {
     padding: 0.75rem 1rem;
     text-align: left;

@@ -31,7 +31,9 @@
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid #e0e0e0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .bet-card:hover {
@@ -181,7 +183,7 @@
 }
 
 .bet-button {
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
   color: #1a1a1a;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -235,7 +237,7 @@
   padding: 1rem;
   border-radius: 8px;
   margin: 1rem 0;
-  border-left: 4px solid #FFD700;
+  border-left: 4px solid #ffd700;
 }
 
 .bet-description p {
@@ -309,7 +311,7 @@
 .total-pot {
   text-align: center;
   padding: 0.75rem;
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
   color: #1a1a1a;
   border-radius: 6px;
   margin-top: 0.5rem;
@@ -447,7 +449,7 @@
 }
 
 .place-bet-button {
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
   color: #1a1a1a;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -466,12 +468,12 @@
   .scores-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .score-header {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .bet-modal {
     margin: 1rem;
     padding: 1.5rem;

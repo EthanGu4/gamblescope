@@ -20,7 +20,7 @@
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  color: #F5F5DC;
+  color: #f5f5dc;
 }
 
 .bet-detail-header {
@@ -35,7 +35,7 @@
 .bet-detail-header h2 {
   margin: 0;
   font-size: 1.8rem;
-  color: #F5F5DC;
+  color: #f5f5dc;
 }
 
 .close-button {
@@ -74,14 +74,15 @@
 .bet-main-info h3 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
-  color: #F5F5DC;
+  color: #f5f5dc;
 }
 
 .bet-main-info p {
   margin: 0.5rem 0;
 }
 
-.opener, .threshold {
+.opener,
+.threshold {
   color: rgba(245, 245, 220, 0.8);
   font-size: 0.95rem;
 }
@@ -92,6 +93,151 @@
   background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
   color: rgba(245, 245, 220, 0.9);
+}
+
+/* Berkeley Time Data Styling */
+.berkeley-time-data {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0, 123, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 123, 255, 0.3);
+}
+
+.course-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.course-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-label-custom {
+  font-size: 0.9rem;
+  color: rgba(245, 245, 220, 0.9);
+  font-weight: 500;
+}
+
+.stat-value-custom {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.threshold-comparison {
+  margin-top: 0.5rem;
+}
+
+.comparison-text {
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  display: block;
+  text-align: center;
+}
+
+.comparison-text.higher {
+  background: rgba(220, 53, 69, 0.2);
+  color: #ff6b6b;
+  border: 1px solid rgba(220, 53, 69, 0.4);
+}
+
+.comparison-text.lower {
+  background: rgba(40, 167, 69, 0.2);
+  color: #51cf66;
+  border: 1px solid rgba(40, 167, 69, 0.4);
+}
+
+.berkeley-time-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: #4dabf7;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.berkeley-time-link:hover {
+  color: #74c0fc;
+  transform: translateX(5px);
+}
+
+/* Grade Distribution Chart */
+.grade-distribution-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grade-distribution-section h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+}
+
+.distribution-chart {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.distribution-chart svg {
+  width: 100%;
+  height: auto;
+}
+
+.distribution-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: rgba(245, 245, 220, 0.8);
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.threshold-indicator {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  position: relative;
+}
+
+.threshold-line {
+  position: absolute;
+  top: -20px;
+  width: 3px;
+  height: 15px;
+  transform: translateX(-50%);
+}
+
+.threshold-label {
+  display: block;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ffd700;
+  font-weight: 600;
 }
 
 .bet-stats {
@@ -114,14 +260,14 @@
 
 .stat-label {
   font-size: 0.95rem;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 500;
 }
 
 .stat-value {
   font-size: 1.4rem;
   font-weight: bold;
-  color: #FFD700;
+  color: #ffd700;
 }
 
 .graph-section h3 {
@@ -214,7 +360,7 @@
 .history-item:hover {
   background: rgba(26, 37, 47, 0.95);
   transform: translateX(5px);
-  color: #F5F5DC;
+  color: #f5f5dc;
 }
 
 .history-user {

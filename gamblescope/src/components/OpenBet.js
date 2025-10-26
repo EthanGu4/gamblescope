@@ -1,39 +1,39 @@
-import React, { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import { generateMockBettingActivity } from '../utils/mockDataGenerator';
-import './OpenBet.css';
+import React, { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { generateMockBettingActivity } from "../utils/mockDataGenerator";
+import "./OpenBet.css";
 
 function OpenBet() {
   const { currentUser } = useAuth();
   const [formData, setFormData] = useState({
-    subject: '',
-    testName: '',
+    subject: "",
+    testName: "",
     threshold: 70,
-    description: ''
+    description: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     let processedValue = value;
-    
+
     // For numeric fields, remove leading zeros
-    if (name === 'threshold') {
-      processedValue = value === '' ? 0 : Number(value);
+    if (name === "threshold") {
+      processedValue = value === "" ? 0 : Number(value);
     }
-    
-    setFormData(prev => ({
+
+    setFormData((prev) => ({
       ...prev,
-      [name]: processedValue
+      [name]: processedValue,
     }));
-    setMessage('');
+    setMessage("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Create new bet
     const newBet = {
       id: Date.now().toString(),
@@ -44,22 +44,22 @@ function OpenBet() {
       testName: formData.testName,
       threshold: parseFloat(formData.threshold),
       description: formData.description,
-      status: 'open', // open, revealed, closed
+      status: "open", // open, revealed, closed
       actualScore: null,
       actualPercentage: null,
       createdAt: new Date().toISOString(),
       revealedAt: null,
       totalBets: 0,
-      totalPot: 0
+      totalPot: 0,
     };
 
     // Generate mock betting activity for the new bet
     const mockBets = generateMockBettingActivity(newBet.id, newBet);
-    const higherBets = mockBets.filter(b => b.prediction === 'higher');
-    const lowerBets = mockBets.filter(b => b.prediction === 'lower');
+    const higherBets = mockBets.filter((b) => b.prediction === "higher");
+    const lowerBets = mockBets.filter((b) => b.prediction === "lower");
     const higherTotal = higherBets.reduce((sum, b) => sum + b.amount, 0);
     const lowerTotal = lowerBets.reduce((sum, b) => sum + b.amount, 0);
-    
+
     // Add mock data to the bet
     const betWithMockData = {
       ...newBet,
@@ -67,40 +67,45 @@ function OpenBet() {
       totalBets: mockBets.length,
       totalPot: higherTotal + lowerTotal,
       higherTotal: higherTotal,
-      lowerTotal: lowerTotal
+      lowerTotal: lowerTotal,
     };
 
     // Save to localStorage
-    const existingBets = JSON.parse(localStorage.getItem('gamblescope_bets') || '[]');
+    const existingBets = JSON.parse(
+      localStorage.getItem("gamblescope_bets") || "[]",
+    );
     const updatedBets = [betWithMockData, ...existingBets];
-    localStorage.setItem('gamblescope_bets', JSON.stringify(updatedBets));
+    localStorage.setItem("gamblescope_bets", JSON.stringify(updatedBets));
 
     // Simulate API call
     setTimeout(() => {
-      setMessage({ type: 'success', text: `Bet opened successfully! Other users can now bet on whether you scored over or under ${formData.threshold}%` });
-      
+      setMessage({
+        type: "success",
+        text: `Bet opened successfully! Other users can now bet on whether you scored over or under ${formData.threshold}%`,
+      });
+
       // Reset form
       setFormData({
-        subject: '',
-        testName: '',
+        subject: "",
+        testName: "",
         threshold: 85,
-        description: ''
+        description: "",
       });
       setIsSubmitting(false);
     }, 1000);
   };
 
   const subjects = [
-    'Mathematics',
-    'Physics',
-    'Chemistry',
-    'Biology',
-    'Computer Science',
-    'English',
-    'History',
-    'Economics',
-    'Psychology',
-    'Other'
+    "Mathematics",
+    "Physics",
+    "Chemistry",
+    "Biology",
+    "Computer Science",
+    "English",
+    "History",
+    "Economics",
+    "Psychology",
+    "Other",
   ];
 
   return (
@@ -123,8 +128,10 @@ function OpenBet() {
                 required
               >
                 <option value="">Select a subject</option>
-                {subjects.map(subject => (
-                  <option key={subject} value={subject}>{subject}</option>
+                {subjects.map((subject) => (
+                  <option key={subject} value={subject}>
+                    {subject}
+                  </option>
                 ))}
               </select>
             </div>
@@ -156,10 +163,10 @@ function OpenBet() {
                 required
               />
               <small className="form-help">
-                Others will bet on whether you scored higher or lower than this percentage
+                Others will bet on whether you scored higher or lower than this
+                percentage
               </small>
             </div>
-
 
             <div className="form-group">
               <label htmlFor="description">Description (Optional)</label>
@@ -176,7 +183,7 @@ function OpenBet() {
             {message && (
               <div className={`message ${message.type}`}>
                 <span className="message-icon">
-                  {message.type === 'success' ? '✅' : '⚠️'}
+                  {message.type === "success" ? "✅" : "⚠️"}
                 </span>
                 {message.text}
               </div>
@@ -186,12 +193,20 @@ function OpenBet() {
               <h4>Bet Preview:</h4>
               <div className="preview-card">
                 <div className="preview-header">
-                  <h5>{formData.subject || 'Subject'} - {formData.testName || 'Test Name'}</h5>
+                  <h5>
+                    {formData.subject || "Subject"} -{" "}
+                    {formData.testName || "Test Name"}
+                  </h5>
                   <span className="preview-status">Open for Betting</span>
                 </div>
                 <div className="preview-details">
-                  <p><strong>Threshold:</strong> {formData.threshold}%</p>
-                  <p><strong>Description:</strong> {formData.description || 'No description provided'}</p>
+                  <p>
+                    <strong>Threshold:</strong> {formData.threshold}%
+                  </p>
+                  <p>
+                    <strong>Description:</strong>{" "}
+                    {formData.description || "No description provided"}
+                  </p>
                 </div>
               </div>
             </div>
@@ -200,12 +215,14 @@ function OpenBet() {
               <button
                 type="button"
                 className="reset-button"
-                onClick={() => setFormData({
-                  subject: '',
-                  testName: '',
-                  threshold: 85,
-                  description: ''
-                })}
+                onClick={() =>
+                  setFormData({
+                    subject: "",
+                    testName: "",
+                    threshold: 85,
+                    description: "",
+                  })
+                }
               >
                 Reset
               </button>
@@ -214,7 +231,7 @@ function OpenBet() {
                 className="submit-button"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Opening Bet...' : 'Open Bet'}
+                {isSubmitting ? "Opening Bet..." : "Open Bet"}
               </button>
             </div>
           </form>
@@ -227,7 +244,9 @@ function OpenBet() {
             <li>Other users bet on whether you scored higher or lower</li>
             <li>You can reveal your actual score anytime</li>
             <li>Winners get paid based on the odds</li>
-            <li>You don't need to put money in - others bet on your performance</li>
+            <li>
+              You don't need to put money in - others bet on your performance
+            </li>
           </ul>
 
           <div className="recent-bets">
@@ -238,7 +257,9 @@ function OpenBet() {
                 <span className="recent-threshold">85% threshold</span>
               </div>
               <div className="recent-item">
-                <span className="recent-subject">Physics - Mechanics Final</span>
+                <span className="recent-subject">
+                  Physics - Mechanics Final
+                </span>
                 <span className="recent-threshold">90% threshold</span>
               </div>
               <div className="recent-item">

@@ -168,7 +168,9 @@
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   margin-top: 1rem;
 }
 
@@ -216,15 +218,15 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .logo h1 {
     font-size: 2.5rem;
   }
-  
+
   .features h2 {
     font-size: 1.5rem;
   }
-  
+
   .auth-card {
     padding: 2rem;
   }
@@ -234,11 +236,11 @@
   .homepage {
     padding: 1rem;
   }
-  
+
   .auth-card {
     padding: 1.5rem;
   }
-  
+
   .logo h1 {
     font-size: 2rem;
   }

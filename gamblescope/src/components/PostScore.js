@@ -1,57 +1,59 @@
-import React, { useState } from 'react';
-import './PostScore.css';
+import React, { useState } from "react";
+import "./PostScore.css";
 
 function PostScore() {
   const [formData, setFormData] = useState({
-    subject: '',
-    testName: '',
-    score: '',
-    maxScore: '',
-    isPublic: true
+    subject: "",
+    testName: "",
+    score: "",
+    maxScore: "",
+    isPublic: true,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       const percentage = Math.round((formData.score / formData.maxScore) * 100);
-      alert(`Score posted successfully!\n${formData.subject} - ${formData.testName}\n${formData.score}/${formData.maxScore} (${percentage}%)\n${formData.isPublic ? 'Public' : 'Private'}`);
-      
+      alert(
+        `Score posted successfully!\n${formData.subject} - ${formData.testName}\n${formData.score}/${formData.maxScore} (${percentage}%)\n${formData.isPublic ? "Public" : "Private"}`,
+      );
+
       // Reset form
       setFormData({
-        subject: '',
-        testName: '',
-        score: '',
-        maxScore: '',
-        isPublic: true
+        subject: "",
+        testName: "",
+        score: "",
+        maxScore: "",
+        isPublic: true,
       });
       setIsSubmitting(false);
     }, 1000);
   };
 
   const subjects = [
-    'Mathematics',
-    'Physics',
-    'Chemistry',
-    'Biology',
-    'Computer Science',
-    'English',
-    'History',
-    'Economics',
-    'Psychology',
-    'Other'
+    "Mathematics",
+    "Physics",
+    "Chemistry",
+    "Biology",
+    "Computer Science",
+    "English",
+    "History",
+    "Economics",
+    "Psychology",
+    "Other",
   ];
 
   return (
@@ -74,8 +76,10 @@ function PostScore() {
                 required
               >
                 <option value="">Select a subject</option>
-                {subjects.map(subject => (
-                  <option key={subject} value={subject}>{subject}</option>
+                {subjects.map((subject) => (
+                  <option key={subject} value={subject}>
+                    {subject}
+                  </option>
                 ))}
               </select>
             </div>
@@ -130,15 +134,20 @@ function PostScore() {
                 <h4>Score Preview:</h4>
                 <div className="preview-card">
                   <div className="preview-score">
-                    <span className="score-value">{formData.score}/{formData.maxScore}</span>
+                    <span className="score-value">
+                      {formData.score}/{formData.maxScore}
+                    </span>
                     <span className="percentage">
-                      ({Math.round((formData.score / formData.maxScore) * 100)}%)
+                      ({Math.round((formData.score / formData.maxScore) * 100)}
+                      %)
                     </span>
                   </div>
                   <div className="preview-info">
-                    <p><strong>{formData.subject}</strong> - {formData.testName}</p>
+                    <p>
+                      <strong>{formData.subject}</strong> - {formData.testName}
+                    </p>
                     <p className="visibility">
-                      {formData.isPublic ? '🌍 Public' : '🔒 Private'}
+                      {formData.isPublic ? "🌍 Public" : "🔒 Private"}
                     </p>
                   </div>
                 </div>
@@ -157,7 +166,8 @@ function PostScore() {
                 Make this score public for betting
               </label>
               <p className="checkbox-help">
-                Public scores can be bet on by other students. Private scores are only visible to you.
+                Public scores can be bet on by other students. Private scores
+                are only visible to you.
               </p>
             </div>
 
@@ -165,13 +175,15 @@ function PostScore() {
               <button
                 type="button"
                 className="reset-button"
-                onClick={() => setFormData({
-                  subject: '',
-                  testName: '',
-                  score: '',
-                  maxScore: '',
-                  isPublic: true
-                })}
+                onClick={() =>
+                  setFormData({
+                    subject: "",
+                    testName: "",
+                    score: "",
+                    maxScore: "",
+                    isPublic: true,
+                  })
+                }
               >
                 Reset
               </button>
@@ -180,7 +192,7 @@ function PostScore() {
                 className="submit-button"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Posting...' : 'Post Score'}
+                {isSubmitting ? "Posting..." : "Post Score"}
               </button>
             </div>
           </form>

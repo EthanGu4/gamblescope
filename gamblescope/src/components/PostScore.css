@@ -273,15 +273,15 @@
   .post-score-content {
     grid-template-columns: 1fr;
   }
-  
+
   .score-inputs {
     grid-template-columns: 1fr;
   }
-  
+
   .form-actions {
     flex-direction: column;
   }
-  
+
   .preview-card {
     flex-direction: column;
     text-align: center;

@@ -26,7 +26,7 @@
 }
 
 .balance-card {
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
   color: #1a1a1a;
   border-radius: 16px;
   padding: 2rem;
@@ -338,21 +338,21 @@
   .wallet {
     padding: 1rem;
   }
-  
+
   .balance-card {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
   }
-  
+
   .balance-amount {
     font-size: 2.5rem;
   }
-  
+
   .balance-icon {
     font-size: 3rem;
   }
-  
+
   .quick-buttons {
     grid-template-columns: repeat(2, 1fr);
   }
