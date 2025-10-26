@@ -20,9 +20,22 @@
   color: white;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.logo-image {
+  height: 4rem;
+  width: auto;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+}
+
 .logo h1 {
   font-size: 3rem;
-  margin: 0 0 0.5rem 0;
+  margin: 0;
   font-weight: bold;
 }
 
@@ -219,6 +232,10 @@
     gap: 2rem;
   }
 
+  .logo-image {
+    height: 3rem;
+  }
+  
   .logo h1 {
     font-size: 2.5rem;
   }
@@ -241,6 +258,10 @@
     padding: 1.5rem;
   }
 
+  .logo-image {
+    height: 2.5rem;
+  }
+  
   .logo h1 {
     font-size: 2rem;
   }

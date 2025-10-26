@@ -99,7 +99,14 @@ function Homepage() {
       <div className="homepage-container">
         <div className="welcome-section">
           <div className="logo">
-            <h1>GambleScope</h1>
+            <div className="logo-container">
+              <img 
+                src="/images/gamblescope_logo.png" 
+                alt="GambleScope" 
+                className="logo-image"
+              />
+              <h1>GambleScope</h1>
+            </div>
             <p className="tagline">get rich off gradescope</p>
           </div>
 

@@ -13,7 +13,14 @@ function Header({ currentView, setCurrentView }) {
     <header className="header">
       <div className="header-content">
         <div className="logo">
-          <h1>GambleScope</h1>
+          <div className="logo-container">
+            <img 
+              src="/images/gamblescope_logo.png" 
+              alt="GambleScope" 
+              className="logo-image"
+            />
+            <h1>GambleScope</h1>
+          </div>
           <span>promoting gambling one student at a time</span>
         </div>
 
