@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import { generateMockBettingActivity } from '../utils/mockDataGenerator';
 import './OpenBet.css';
 
 function OpenBet() {
@@ -52,9 +53,26 @@ function OpenBet() {
       totalPot: 0
     };
 
+    // Generate mock betting activity for the new bet
+    const mockBets = generateMockBettingActivity(newBet.id, newBet);
+    const higherBets = mockBets.filter(b => b.prediction === 'higher');
+    const lowerBets = mockBets.filter(b => b.prediction === 'lower');
+    const higherTotal = higherBets.reduce((sum, b) => sum + b.amount, 0);
+    const lowerTotal = lowerBets.reduce((sum, b) => sum + b.amount, 0);
+    
+    // Add mock data to the bet
+    const betWithMockData = {
+      ...newBet,
+      individualBets: mockBets,
+      totalBets: mockBets.length,
+      totalPot: higherTotal + lowerTotal,
+      higherTotal: higherTotal,
+      lowerTotal: lowerTotal
+    };
+
     // Save to localStorage
     const existingBets = JSON.parse(localStorage.getItem('gamblescope_bets') || '[]');
-    const updatedBets = [newBet, ...existingBets];
+    const updatedBets = [betWithMockData, ...existingBets];
     localStorage.setItem('gamblescope_bets', JSON.stringify(updatedBets));
 
     // Simulate API call

@@ -88,13 +88,13 @@ function AdminPanel() {
   };
 
   const handleGenerateMockData = () => {
-    if (window.confirm('This will generate 5 demo bets with mock betting activity. Continue?')) {
+    if (window.confirm('This will generate 10 demo bets with mock betting activity. Continue?')) {
       const mockBets = generateMockBetsForDemo();
       const existingBets = JSON.parse(localStorage.getItem('gamblescope_bets') || '[]');
       const updatedBets = [...mockBets, ...existingBets];
       localStorage.setItem('gamblescope_bets', JSON.stringify(updatedBets));
       setAllBets(updatedBets);
-      setMessage({ type: 'success', text: 'Mock data generated successfully! 5 bets with 15-25 mock bettors each.' });
+      setMessage({ type: 'success', text: 'Mock data generated successfully!' });
     }
   };
 

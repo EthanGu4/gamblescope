@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import BetDetailModal from './BetDetailModal';
 import './Market.css';
 
 function Market() {
   const { currentUser, updateUserWallet } = useAuth();
   const [selectedBet, setSelectedBet] = useState(null);
+  const [betDetailBet, setBetDetailBet] = useState(null);
   const [betAmount, setBetAmount] = useState(10);
   const [betPrediction, setBetPrediction] = useState('higher');
   const [openedBets, setOpenedBets] = useState([]);
@@ -238,6 +240,15 @@ function Market() {
                       </button>
                     </div>
                   )}
+
+                  <div className="bet-actions">
+                    <button 
+                      className="view-details-button"
+                      onClick={() => setBetDetailBet(bet)}
+                    >
+                      📊 View Details & Graph
+                    </button>
+                  </div>
             </div>
           ))
         ) : (
@@ -323,6 +334,14 @@ function Market() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Bet Detail Modal */}
+      {betDetailBet && (
+        <BetDetailModal 
+          bet={betDetailBet} 
+          onClose={() => setBetDetailBet(null)} 
+        />
       )}
     </div>
   );

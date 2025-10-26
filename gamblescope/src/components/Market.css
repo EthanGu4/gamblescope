@@ -175,6 +175,9 @@
 
 .bet-actions {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .bet-button {
@@ -207,6 +210,24 @@
 
 .reveal-button:hover {
   transform: translateY(-2px);
+}
+
+.view-details-button {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  width: 100%;
+}
+
+.view-details-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }
 
 .bet-description {
